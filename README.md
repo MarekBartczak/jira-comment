@@ -27,18 +27,52 @@ Czego w komentarzu nie ma nigdy: informacji o modelu i jego narzędziach („nie
 
 ## Instalacja
 
-Claude Code (globalnie, wszystkie projekty):
+Skill to katalog `jira-comment/` z jednym plikiem `SKILL.md`. Format jest ten sam we wszystkich aplikacjach — różni się tylko miejsce, w które go wkładasz.
+
+### Claude Code — CLI i aplikacja desktopowa (Linux, macOS, Windows)
+
+Skille użytkownika leżą w `~/.claude/skills/<nazwa>/SKILL.md`; na Windowsie `~` to `%USERPROFILE%`, czyli `%USERPROFILE%\.claude\skills\jira-comment\SKILL.md`. Aplikacja desktopowa Claude Code czyta ten sam katalog w sesjach lokalnych (w sesji SSH — katalog na zdalnej maszynie; sesje chmurowe widzą tylko skille zsynchronizowane z claude.ai).
+
+Linux / macOS:
 
 ```bash
 git clone git@github.com:MarekBartczak/jira-comment.git
+mkdir -p ~/.claude/skills
 cp -r jira-comment/jira-comment ~/.claude/skills/
 ```
 
-Claude Code (jeden projekt): to samo do `<repo>/.claude/skills/jira-comment/`.
+Windows (PowerShell):
 
-Codex CLI: `~/.codex/skills/jira-comment/` — symlink do kopii z Claude działa, jedno źródło.
+```powershell
+git clone git@github.com:MarekBartczak/jira-comment.git
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
+Copy-Item -Recurse jira-comment\jira-comment "$env:USERPROFILE\.claude\skills\"
+```
 
-Skill sam nie pisze do Jiry. Po „ok" Claude używa tego narzędzia do Jiry, które masz podpięte (np. MCP Atlassian `addCommentToJiraIssue`). Bez narzędzia — kopiujesz tekst ręcznie.
+Windows z WSL: Claude Code uruchomiony w WSL czyta `~/.claude/skills` z systemu plików WSL, nie z `%USERPROFILE%`.
+
+Tylko jeden projekt zamiast globalnie: to samo do `<repo>/.claude/skills/jira-comment/`.
+
+Aplikacja desktopowa Claude na Linuksie jest w becie (Ubuntu 22.04+, Debian 12+). Na innych dystrybucjach zostaje CLI — skill działa identycznie.
+
+### Claude Desktop / claude.ai — aplikacja czatu
+
+Skill wgrywa się jako ZIP w ustawieniach konta (sekcja Skills w części Customize). Wymaga planu Pro, Max, Team lub Enterprise i włączonego wykonywania kodu. ZIP musi zawierać katalog o nazwie skilla, nie sam plik:
+
+```
+jira-comment.zip
+└── jira-comment/
+    └── SKILL.md
+```
+
+Linux / macOS: `zip -r jira-comment.zip jira-comment`
+Windows (PowerShell): `Compress-Archive -Path jira-comment -DestinationPath jira-comment.zip`
+
+W czacie bez podpiętej Jiry (np. konektor Atlassian) skill po „ok" nie ma czym wpisać komentarza — kopiujesz tekst ręcznie. To samo dotyczy Claude Code bez MCP do Jiry.
+
+### Codex CLI
+
+`~/.codex/skills/jira-comment/` — symlink do kopii z Claude działa, jedno źródło.
 
 ## Użycie
 
