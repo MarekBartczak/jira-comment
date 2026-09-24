@@ -1,13 +1,13 @@
 ---
 name: jira-comment
-description: Użyj przed napisaniem, poprawieniem lub wysłaniem jakiegokolwiek komentarza albo odpowiedzi w Jirze — gdy user prosi „odpisz", „odpowiedz Łukaszowi/Maćkowi", „daj tekst do wklejenia", wkleja komentarz z Jiry i chce odpowiedzi, albo gdy odpowiadasz na uwagi QA/CR w tickecie.
+description: Użyj przed napisaniem, poprawieniem lub wysłaniem jakiegokolwiek komentarza albo odpowiedzi w Jirze — gdy user prosi „odpisz", „odpowiedz PM-owi/QA", „daj tekst do wklejenia", wkleja komentarz z Jiry i chce odpowiedzi, albo gdy odpowiadasz na uwagi QA/CR w tickecie.
 ---
 
 # Komentarz do Jiry
 
 ## Zasada
 
-Komentarz czyta jedna osoba, często nietechniczna, w Jirze — bez Ciebie i bez kontekstu tej rozmowy. Ma wyglądać, jakby Marek napisał go ręcznie do tej osoby. Wszystko o Tobie, Twoich narzędziach i Twoim procesie zostaje w czacie z Markiem.
+Komentarz czyta jedna osoba, często nietechniczna, w Jirze — bez Ciebie i bez kontekstu tej rozmowy. Ma wyglądać, jakby user napisał go ręcznie do tej osoby. Wszystko o Tobie, Twoich narzędziach i Twoim procesie zostaje w czacie z userem.
 
 ## Krok 1 — Tryb
 
@@ -18,14 +18,14 @@ Polecenie nie nazywa odbiorcy ani trybu → zapytaj, zanim napiszesz choć zdani
 
 Nie zgaduj z imienia, roli ani ze stylu komentarza. „Leć", „szybko", „mam call" nie zwalniają z pytania — pytanie to jedna linijka. Bez dostępu do narzędzia zadaj pytanie tekstem i zatrzymaj się.
 
-Tryb podany wprost („Łukasz to PM, nie jest techniczny", „odpisz normalnie") → bez pytania.
+Tryb podany wprost („odbiorca to PM, nie jest techniczny", „odpisz normalnie") → bez pytania.
 
 ## Krok 2 — Kształt komentarza (oba tryby)
 
 Komentarz składa się wyłącznie z:
 
 1. odpowiedzi albo decyzji — po jednej na każdy punkt, który poruszył autor,
-2. opcjonalnie jednej linii o tym, co czytający zobaczy albo ma zrobić („wejdzie na QA2 z najbliższym wdrożeniem", „kliknij Odśwież produkty przy koncie"),
+2. opcjonalnie jednej linii o tym, co czytający zobaczy albo ma zrobić („wejdzie na QA z najbliższym wdrożeniem", „kliknij Odśwież produkty przy koncie"),
 3. opcjonalnie jednego pytania, jasno postawionego.
 
 Nic poza tym: bez wstępu i rozbiegu („tłumaczę dokładnie, skąd…"), bez podziękowań-wypełniaczy, bez zamknięcia („daj znać, jeśli…"), bez nagłówków i bolda do porządkowania, bez powtarzania liczb, które autor już napisał.
@@ -34,7 +34,7 @@ Odpowiedź na uwagę QA/CR to jedno słowo lub jedna linijka: „Naprawione.", �
 
 W komentarzu nie ma, niezależnie od trybu:
 
-- **Ciebie i narzędzi**: „screenshot się nie załadował", „nie mogę pobrać nagrania", „z kodu wynika", „grep pokazuje", „numeracja jak w Twoim komentarzu". Nie widzisz załącznika → powiedz to Markowi w czacie i zapytaj, co na nim jest. W komentarzu odpowiadasz tylko na to, co wiesz, a o resztę pytasz autora jednym zdaniem („Której oferty dotyczy nagranie?", „Ile pokazuje panel, a ile Allegro?") — bez tłumaczenia, dlaczego pytasz. Nie zakładasz „typowego przypadku" i nie orzekasz („to nie błąd"), gdy rozstrzyga o tym właśnie to, czego nie widzisz.
+- **Ciebie i narzędzi**: „screenshot się nie załadował", „nie mogę pobrać nagrania", „z kodu wynika", „grep pokazuje", „numeracja jak w Twoim komentarzu". Nie widzisz załącznika → powiedz to userowi w czacie i zapytaj, co na nim jest. W komentarzu odpowiadasz tylko na to, co wiesz, a o resztę pytasz autora jednym zdaniem („Której oferty dotyczy nagranie?", „Ile pokazuje panel, a ile marketplace?") — bez tłumaczenia, dlaczego pytasz. Nie zakładasz „typowego przypadku" i nie orzekasz („to nie błąd"), gdy rozstrzyga o tym właśnie to, czego nie widzisz.
 - **Identyfikatorów, które nic nie zmieniają dla czytającego**: hashe commitów, numery MR-ów, nazwy funkcji, pól, kolekcji, handlerów.
 
 ## Krok 3 — Warstwa „mocno ludzko"
@@ -51,29 +51,29 @@ Pokaż pełny tekst komentarza w czacie i czekaj na jawne „ok". Bez „ok" nie
 
 ## Przykłady
 
-PM pyta: „Przy koncie MODA-OUTLET panel pokazuje mniej ofert niż Allegro (screen). Skąd różnica? Trzeba coś klikać? I czy przy „Nie rób nic" oferty znikną z erli?"
+PM pyta: „Przy koncie X panel pokazuje mniej ofert niż marketplace (screen). Skąd różnica? Trzeba coś klikać? I czy przy „Nie rób nic" oferty znikną z platformy?"
 
-❌ 230 słów: „Cześć Łukasz, dzięki za sprawdzenie na stagingu, tłumaczę dokładnie skąd biorą się różnice i co warto wiedzieć: **1. Skąd różnica 1 842 vs 2 107 ofert?** Różnica ma dwa źródła: …" — trzy nagłówki, listy, te same liczby dwa razy, „Daj znać, jeśli coś jeszcze budzi wątpliwości."
+❌ 230 słów: „Cześć X, dzięki za sprawdzenie na stagingu, tłumaczę dokładnie skąd biorą się różnice i co warto wiedzieć: **1. Skąd różnica 1 842 vs 2 107 ofert?** Różnica ma dwa źródła: …" — trzy nagłówki, listy, te same liczby dwa razy, „Daj znać, jeśli coś jeszcze budzi wątpliwości."
 
-✅ „Różnica to oferty dodane ręcznie w Allegro (tych panel nie liczy, bo nie pochodzą z pliku) plus oferty z ostatnich godzin, które jeszcze się nie przeliczyły. Te drugie dogonią się same w ciągu 12 godzin albo od razu po kliknięciu „Odśwież produkty" przy koncie. „Nie rób nic" niczego nie usuwa — istniejące oferty zostają, przestajemy tylko dodawać i zmieniać oferty z pliku."
+✅ „Różnica to oferty dodane ręcznie w marketplace (tych panel nie liczy, bo nie pochodzą z pliku) plus oferty z ostatnich godzin, które jeszcze się nie przeliczyły. Te drugie dogonią się same w ciągu 12 godzin albo od razu po kliknięciu „Odśwież produkty" przy koncie. „Nie rób nic" niczego nie usuwa — istniejące oferty zostają, przestajemy tylko dodawać i zmieniać oferty z pliku."
 
 QA po reteście, cztery punkty (1–2 OK, 3 sort skacze, 4 przycisk tylko dla admina — celowe?), tryb normalny:
 
 ❌ „Dzięki za retest! **Ad 3.** To pre-existing bug, nie z tego MR-a — sort szedł po `offerId`, które nie jest unikalne między integracjami, stąd niestabilna kolejność między stronami. Poprawka (sort po `_id`) jest już w kodzie: commit `e70dc494f36`, MR !27805. …"
 
-✅ „1–2. OK. 3. Naprawione, wejdzie na QA2 z najbliższym wdrożeniem, dam znać do retestu. 4. Celowe — support dostanie tę akcję osobnym taskiem."
+✅ „1–2. OK. 3. Naprawione, wejdzie na QA z najbliższym wdrożeniem, dam znać do retestu. 4. Celowe — support dostanie tę akcję osobnym taskiem."
 
 ## Racjonalizacje
 
 | Myśl | Rzeczywistość |
 |---|---|
-| „Marek napisał «leć», nie ma czasu na pytanie o tryb" | Pytanie to jedna linijka. Zły tryb = skasowany komentarz i „to jakaś kpina". |
+| „User napisał «leć», nie ma czasu na pytanie o tryb" | Pytanie to jedna linijka. Zły tryb = skasowany komentarz i „to jakaś kpina". |
 | „PM narzekał, że odpowiedzi są niepełne, więc piszę wyczerpująco" | Niepełne ≠ krótkie. Niepełne = bez odpowiedzi na któryś punkt. Każdy punkt, jedno zdanie. |
-| „Wyjaśnię, czemu nie odnoszę się do screena" | To zdanie o Tobie, nie o sprawie. Zapytaj Marka w czacie, co jest na screenie. |
+| „Wyjaśnię, czemu nie odnoszę się do screena" | To zdanie o Tobie, nie o sprawie. Zapytaj usera w czacie, co jest na screenie. |
 | „QA to technik, commit i nazwa pola mu pomogą" | Pomogą devowi w MR-ze. W tickecie QA chce wiedzieć: naprawione czy nie i gdzie retestować. |
 | „Krótko wyjdzie niegrzecznie" | Jedno zdanie na temat jest grzeczniejsze niż ściana tekstu czytana dwa razy. |
 | „Nagłówki i bold ułatwią czytanie" | Trzy zdania nie potrzebują nawigacji. Struktura zdradza maszynę. |
-| „Mam call za 3 minuty, założę typowy przypadek i dopiszę Markowi uwagę w czacie" | Uwaga w czacie nie dociera do czytającego. Do komentarza wchodzi to, co wiesz; o resztę pytasz autora jednym zdaniem. |
+| „Mam call za 3 minuty, założę typowy przypadek i dopiszę userowi uwagę w czacie" | Uwaga w czacie nie dociera do czytającego. Do komentarza wchodzi to, co wiesz; o resztę pytasz autora jednym zdaniem. |
 
 ## Czerwone flagi — zatrzymaj się i przepisz
 
