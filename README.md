@@ -5,7 +5,7 @@ Skill dla Claude Code (działa też w Codex CLI), który pilnuje, żeby komentar
 ## TL;DR
 
 1. Skopiuj katalog `jira-comment/` do `~/.claude/skills/`.
-2. Gdy prosisz Claude o odpowiedź w Jirze („odpisz Łukaszowi", „daj tekst do wklejenia", „odpowiedz na uwagi QA"), skill włącza się sam.
+2. Gdy prosisz Claude o odpowiedź w Jirze („odpisz PM-owi", „daj tekst do wklejenia", „odpowiedz na uwagi QA"), skill włącza się sam.
 3. Skill pyta o tryb (techniczny / mocno ludzki), pokazuje pełny tekst komentarza i **czeka na Twoje „ok"** zanim cokolwiek trafi do Jiry.
 
 ## Problem, który rozwiązuje
@@ -44,13 +44,13 @@ Skill sam nie pisze do Jiry. Po „ok" Claude używa tego narzędzia do Jiry, kt
 
 Wystarczy naturalne polecenie w rozmowie, np.:
 
-- „odpisz Maćkowi w INTEGRA-1234, uwagi 1 i 3 naprawione, 2 celowe"
+- „odpisz QA w PROJ-1234, uwagi 1 i 3 naprawione, 2 celowe"
 - „daj tekst do wklejenia dla PM-a, że różnica w liczbie ofert to te dodane ręcznie"
 - wklejony komentarz z Jiry + „co mu odpowiedzieć?"
 
 Albo wprost: `/jira-comment <ticket> <co odpowiedzieć> tryb: Ludzko`.
 
-Tryb można podać od razu w poleceniu („Łukasz to PM, nie jest techniczny", „odpisz normalnie") — wtedy skill nie pyta.
+Tryb można podać od razu w poleceniu („odbiorca to PM, nie jest techniczny", „odpisz normalnie") — wtedy skill nie pyta.
 
 ## Dostosowanie do swojego zespołu
 
@@ -62,7 +62,7 @@ Tryb można podać od razu w poleceniu („Łukasz to PM, nie jest techniczny", 
 
 ## Dlaczego tak
 
-Komentarz czyta jedna osoba, często nietechniczna, bez kontekstu rozmowy z modelem. Ma wyglądać, jakby autor ticketu dostał odpowiedź od człowieka, który przeczytał jego punkty i na każdy odpowiedział. Wszystko o modelu, jego narzędziach i procesie zostaje w czacie z użytkownikiem. Sekcja **Racjonalizacje** i **Czerwone flagi** w `SKILL.md` wyliczają typowe wymówki modelu („Marek napisał «leć», nie ma czasu na pytanie o tryb") i momenty, w których ma się zatrzymać i przepisać.
+Komentarz czyta jedna osoba, często nietechniczna, bez kontekstu rozmowy z modelem. Ma wyglądać, jakby autor ticketu dostał odpowiedź od człowieka, który przeczytał jego punkty i na każdy odpowiedział. Wszystko o modelu, jego narzędziach i procesie zostaje w czacie z użytkownikiem. Sekcja **Racjonalizacje** i **Czerwone flagi** w `SKILL.md` wyliczają typowe wymówki modelu („użytkownik napisał «leć», nie ma czasu na pytanie o tryb") i momenty, w których ma się zatrzymać i przepisać.
 
 ## Licencja
 
